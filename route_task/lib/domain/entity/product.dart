@@ -1,11 +1,13 @@
+import 'package:route_task/domain/entity/product.dart';
+
 class ProductResponseEntity {
   int? id;
   String? title;
   String? description;
   String? category;
-  double? price;
-  double? discountPercentage;
-  double? rating;
+  num? price;
+  num? discountPercentage;
+  num? rating;
   int? stock;
   List<String>? tags;
   String? brand;
@@ -49,11 +51,19 @@ class ProductResponseEntity {
 }
 
 class DimensionsEntity {
-  double? width;
-  double? height;
-  double? depth;
+  num? width;
+  num? height;
+  num? depth;
 
   DimensionsEntity({this.width, this.height, this.depth});
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['width'] = width;
+    data['height'] = height;
+    data['depth'] = depth;
+    return data;
+  }
 }
 
 class ReviewsEntity {
@@ -70,6 +80,16 @@ class ReviewsEntity {
     this.reviewerName,
     this.reviewerEmail,
   });
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['rating'] = rating;
+    data['comment'] = comment;
+    data['date'] = date;
+    data['reviewerName'] = reviewerName;
+    data['reviewerEmail'] = reviewerEmail;
+    return data;
+  }
 }
 
 class MetaEntity {
@@ -79,4 +99,13 @@ class MetaEntity {
   String? qrCode;
 
   MetaEntity({this.createdAt, this.updatedAt, this.barcode, this.qrCode});
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
+    data['barcode'] = barcode;
+    data['qrCode'] = qrCode;
+    return data;
+  }
 }
