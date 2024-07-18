@@ -72,7 +72,7 @@ class ProductPage extends StatelessWidget {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is ProductLoaded) {
                     return Padding(
-                      padding: const EdgeInsets.only(right: 15.0),
+                      padding: EdgeInsets.only(right: 15.0.w, bottom: 15.h),
                       child: GridView.builder(
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
