@@ -2,39 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:route_task/ui/cubit/get_products_cubit.dart';
 import 'package:route_task/ui/cubit/get_products_state.dart';
-import 'package:route_task/domain/entity/product.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 40),
+        padding: EdgeInsets.only(left: 20.w, top: 40.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset("images/Group 5.png"),
-            const SizedBox(
-              height: 15,
+            SizedBox(
+              height: 15.h,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 15),
+              padding: EdgeInsets.only(right: 15.w),
               child: Row(
                 children: [
                   Expanded(
                     child: Container(
-                      height: 45,
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      height: 45.h,
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
+                        borderRadius: BorderRadius.circular(24.r),
                         color: Colors.transparent,
                         border: Border.all(
-                          width: 2,
+                          width: 2.w,
                           color: const Color.fromRGBO(0, 65, 130, 0.3),
                         ),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -42,18 +42,18 @@ class ProductPage extends StatelessWidget {
                             prefixIcon: Icon(
                               Icons.search,
                               color: Color.fromRGBO(0, 65, 130, 0.7),
-                              size: 30,
+                              size: 30.sp,
                             ),
                             hintStyle: TextStyle(
-                                color: Color.fromRGBO(6, 0, 79, 0.6),
-                                fontSize: 14),
+                                color: const Color.fromRGBO(6, 0, 79, 0.6),
+                                fontSize: 14.sp),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 15,
+                  SizedBox(
+                    width: 15.w,
                   ),
                   InkWell(
                       child: Image.asset("images/🦆 icon _shopping cart_.png")),
@@ -86,18 +86,18 @@ class ProductPage extends StatelessWidget {
                           var product = state.products[index];
                           return GridTile(
                             child: SizedBox(
-                              width: 50,
-                              height: 100,
+                              width: 50.w,
+                              height: 100.h,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(16.r),
                                   border: Border.all(
                                     color:
                                         const Color.fromRGBO(0, 65, 130, 0.7),
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
+                                  padding: EdgeInsets.only(left: 10.0.w),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -107,94 +107,96 @@ class ProductPage extends StatelessWidget {
                                           Center(
                                             child: Image.network(
                                               product.images![0],
-                                              height: 120,
+                                              height: 100.h,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
                                           Positioned(
-                                              left: 120,
-                                              top: 5,
+                                              left: 105.w,
+                                              top: 5.h,
                                               child: Image.asset(
                                                   "images/Group 17.png"))
                                         ],
                                       ),
                                       Text(
                                         product.title!,
-                                        style: const TextStyle(
-                                          color: Color.fromRGBO(6, 0, 79, 1),
-                                          fontSize: 16,
+                                        style: TextStyle(
+                                          color:
+                                              const Color.fromRGBO(6, 0, 79, 1),
+                                          fontSize: 16.sp,
                                         ),
                                         maxLines: 1,
                                       ),
-                                      const SizedBox(
-                                        height: 5,
+                                      SizedBox(
+                                        height: 5.h,
                                       ),
                                       Text(
                                         product.description!,
-                                        style: const TextStyle(
-                                          color: Color.fromRGBO(6, 0, 79, 1),
-                                          fontSize: 14,
+                                        style: TextStyle(
+                                          color:
+                                              const Color.fromRGBO(6, 0, 79, 1),
+                                          fontSize: 14.sp,
                                         ),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                      const SizedBox(
-                                        height: 8,
+                                      SizedBox(
+                                        height: 8.h,
                                       ),
                                       Row(
                                         children: [
                                           Text(
                                             "EGP ${product.discountPercentage}",
-                                            style: const TextStyle(
-                                              color:
-                                                  Color.fromRGBO(6, 0, 79, 1),
-                                              fontSize: 16,
+                                            style: TextStyle(
+                                              color: const Color.fromRGBO(
+                                                  6, 0, 79, 1),
+                                              fontSize: 14.sp,
                                             ),
                                           ),
-                                          const SizedBox(
-                                            width: 15,
+                                          SizedBox(
+                                            width: 15.w,
                                           ),
                                           Stack(
                                             children: [
                                               Text(
-                                                "\$${product.price}",
-                                                style: const TextStyle(
-                                                  color: Color.fromRGBO(
+                                                "${product.price}",
+                                                style: TextStyle(
+                                                  color: const Color.fromRGBO(
                                                       0, 65, 130, 0.6),
-                                                  fontSize: 14,
+                                                  fontSize: 14.sp,
                                                 ),
                                               ),
-                                              const Positioned.fill(
+                                              Positioned.fill(
                                                 child: Align(
                                                     alignment: Alignment.center,
                                                     child: Divider(
-                                                      color: Color.fromRGBO(
-                                                          0, 65, 130, 0.6),
-                                                      thickness: 1.5,
+                                                      color:
+                                                          const Color.fromRGBO(
+                                                              0, 65, 130, 0.6),
+                                                      thickness: 1.5.sp,
                                                     )),
                                               ),
                                             ],
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(
-                                        height: 5,
+                                      SizedBox(
+                                        height: 5.h,
                                       ),
                                       Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 10.0),
+                                        padding: EdgeInsets.only(right: 10.0.w),
                                         child: Row(
                                           children: [
                                             Text(
                                               "Review (${product.rating})",
-                                              style: const TextStyle(
-                                                color:
-                                                    Color.fromRGBO(6, 0, 79, 1),
-                                                fontSize: 12,
+                                              style: TextStyle(
+                                                color: const Color.fromRGBO(
+                                                    6, 0, 79, 1),
+                                                fontSize: 12.sp,
                                               ),
                                             ),
-                                            const SizedBox(
-                                              width: 5,
+                                            SizedBox(
+                                              width: 5.w,
                                             ),
                                             const Icon(
                                               Icons.star,

@@ -9,6 +9,7 @@ import 'package:route_task/core/api_manage.dart';
 import 'package:route_task/domain/usecase/get_products_usecase.dart';
 import 'package:route_task/ui/cubit/get_products_cubit.dart';
 import 'package:route_task/ui/widgets/test.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   final apiManager = ApiManager.getInstance();
@@ -27,16 +28,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Product App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: BlocProvider(
-        create: (context) =>
-            ProductCubit(getProductsUsecase: getProductsUsecase),
-        child: ProductPage(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Product App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: BlocProvider(
+          create: (context) =>
+              ProductCubit(getProductsUsecase: getProductsUsecase),
+          child: ProductPage(),
+        ),
       ),
     );
   }
